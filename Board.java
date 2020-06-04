@@ -27,6 +27,14 @@ public class Board {
         }
     }
 
+    public Tile tileAtCoord(int[][] coord){
+        return board[coord.length][coord[0].length];
+    }
+
+    public void movePiece(int[][] piece, int[][] destination){
+        
+    }
+
     //false is game is over
     public boolean getStatus(){
         Piece aPiece = null;

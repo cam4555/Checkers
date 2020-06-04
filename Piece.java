@@ -7,10 +7,16 @@ public class Piece {
     }
 
     color pieceColor;
+    boolean king;
 
     public Piece(Piece.color pieceColor){
         this.pieceColor = pieceColor;
+        this.king = false;
     }        
+
+    public void makeKing(){
+        this.king = true;
+    }
 
     public Piece.color getColor(){
         return pieceColor;
