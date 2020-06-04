@@ -4,17 +4,23 @@ public class Board {
 
     public Board(){
         board = new Tile[8][8];
-
+        // X is playable space, O is not
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
-                if (i < 2){
-                    board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.RED));
-                }
-                else if (i > 5){
-                    board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.BLACK));
+                if ((i < 3 || i > 4 && j % 2 == 0)){
+
+                    if (i < 3){
+                        board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.RED));
+                    }
+                    else if (i > 4){
+                        board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.BLACK));
+                    }
+                    else{
+                        board[i][j] = new Tile(new int[i][j], null);
+                    }
                 }
                 else{
-                    board[i][j] = new Tile(new int[i][j], null);
+                    board[i][j] = null;
                 }
             }
         }
@@ -29,9 +35,12 @@ public class Board {
                 && aPiece == null){
                     aPiece = board[i][j].getPiece();
                 }
-                else if (aPiece != board[i][j].getPiece())
+                else if (aPiece != board[i][j].getPiece()){
+                    return true;
+                }
             }
         }
+        return false;
     }
 
     @Override
@@ -40,7 +49,10 @@ public class Board {
         for ( int i = 0; i < 8; i ++){
             out += "\n";
             for (int j = 0; j < 8; j++){
-                out += "  " + board[i][j].toString();
+                if (board[i][j] == null)
+                    out += "  O";
+                else
+                    out += "  " + board[i][j].toString();
             }
         }
         return out;

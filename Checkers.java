@@ -12,9 +12,10 @@ public class Checkers {
         System.out.println("How many players");
         String response = scanner.nextLine();
 
+        
         if (response == "2"){
-            Player playerR = new Player(Piece.color.RED);
-            Player playerB = new Player(Piece.color.BLACK);
+            Player player1 = new Player(Piece.color.RED);
+            Player player2 = new Player(Piece.color.BLACK);
         }
 
         while (gameboard.getStatus()){
