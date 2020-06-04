@@ -13,13 +13,16 @@ public class Checkers {
         String response = scanner.nextLine();
 
         
-        if (response == "2"){
-            Player player1 = new Player(Piece.color.RED);
-            Player player2 = new Player(Piece.color.BLACK);
-        }
+        Player player1 = new Player(Piece.color.RED);
+        Player player2 = new Player(Piece.color.BLACK);
 
         while (gameboard.getStatus()){
-
+            System.out.println("Insert coords to see possible moves");
+            response = scanner.nextLine();
+            
+            String[] responseList = response.split(" ");
+            int[][] coords = new int[Integer.parseInt(responseList[0])][Integer.parseInt(responseList[1])];
+            System.out.println(player1.possibleMoves(gameboard, coords));
         }
 
 
