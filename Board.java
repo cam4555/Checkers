@@ -5,9 +5,10 @@ public class Board {
     public Board(){
         board = new Tile[8][8];
         // X is playable space, O is not
+        //i row, j col
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
-                if ((i < 3 || i > 4 && j % 2 == 0)){
+                if (( i % 2 != 0 && j % 2 == 0) ||(i % 2 == 0 && j % 2 != 0)){
 
                     if (i < 3){
                         board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.RED));
