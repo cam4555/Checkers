@@ -11,13 +11,13 @@ public class Board {
                 if (( i % 2 != 0 && j % 2 == 0) || (i % 2 == 0 && j % 2 != 0)){
 
                     if (i < 3){
-                        board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.RED));
+                        board[i][j] = new Tile(new int[] {i, j}, new Piece(Piece.color.RED));
                     }
                     else if (i > 4){
-                        board[i][j] = new Tile(new int[i][j], new Piece(Piece.color.BLACK));
+                        board[i][j] = new Tile(new int[] {i, j}, new Piece(Piece.color.BLACK));
                     }
                     else{
-                        board[i][j] = new Tile(new int[i][j], null);
+                        board[i][j] = new Tile(new int[] {i, j}, null);
                     }
                 }
                 else{
@@ -27,8 +27,8 @@ public class Board {
         }
     }
 
-    public Tile tileAtCoord(int[][] coord){
-        return board[coord.length][coord[0].length];
+    public Tile tileAtCoord(int[] coord){
+        return board[coord[0]][coord[1]];
     }
 
     public void movePiece(int[][] piece, int[][] destination){
@@ -40,13 +40,15 @@ public class Board {
         Piece aPiece = null;
         for ( int i = 0; i < 8; i ++){
             for (int j = 0; j < 8; j++){
-                if (board[i][j].getPiece() != null 
-                && aPiece == null){
-                    aPiece = board[i][j].getPiece();
-                }
-                else if (aPiece != board[i][j].getPiece()){
-                    return true;
-                }
+                if (board[i][j] != null){}
+                    if (board[i][j].getPiece() != null 
+                    && aPiece == null){
+                        aPiece = board[i][j].getPiece();
+                    }
+                    else if (aPiece != board[i][j].getPiece()){
+                        return true;
+                    }
+                
             }
         }
         return false;

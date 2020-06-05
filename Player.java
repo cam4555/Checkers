@@ -19,29 +19,29 @@ public class Player {
         return type;
     }
 
-    public boolean moveInBounds(int[][] move){
-        if (move.length >= 0 && move.length < 8 && move[0].length >= 0 && move[0].length < 8){
+    public boolean moveInBounds(int[] move){
+        if (move[0] >= 0 && move[0] < 8 && move[1] >= 0 && move[1] < 8){
             return true;
         }
         return false;
 
     }
 
-    public ArrayList<int[][]> possibleMoves(Board board, int[][] coords){
-        ArrayList<int[][]> moveList = new ArrayList<>();
+    public ArrayList<int[]> possibleMoves(Board board, int[] coords){
+        ArrayList<int[]> moveList = new ArrayList<>();
         //todo
         if (board.tileAtCoord(coords) != null && board.tileAtCoord(coords).getPiece().getColor() != this.type){
-            if (moveInBounds(new int[coords.length + UPRIGHT.length][coords[0].length + UPRIGHT[0].length])){
-                moveList.add(new int[coords.length + UPRIGHT.length][coords[0].length + UPRIGHT[0].length]);
+            if (moveInBounds(new int[] {coords[0] + UPRIGHT[0], coords[1] + UPRIGHT[1]})){
+                moveList.add(new int[] {coords[0] + UPRIGHT[0], coords[1] + UPRIGHT[1]});
             }
-            else if (moveInBounds(new int[coords.length + UPLEFT.length][coords[0].length + UPLEFT[0].length])){
-                moveList.add(new int[coords.length + UPLEFT.length][coords[0].length + UPLEFT[0].length]);
+            else if (moveInBounds(new int[] {coords[0] + UPLEFT[0], coords[1] + UPLEFT[1]})){
+                moveList.add(new int[] {coords[0] + UPLEFT[0], coords[1] + UPLEFT[1]});
             }
-            else if (moveInBounds(new int[coords.length + DOWNRIGHT.length][coords[0].length + DOWNRIGHT[0].length])){
-                moveList.add(new int[coords.length + DOWNRIGHT.length][coords[0].length + DOWNRIGHT[0].length]);
+            else if (moveInBounds(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]})){
+                moveList.add(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]});
             }
-            else if (moveInBounds(new int[coords.length + DOWNLEFT.length][coords[0].length + DOWNLEFT[0].length])){
-                moveList.add(new int[coords.length + DOWNLEFT.length][coords[0].length + DOWNLEFT[0].length]);
+            else if (moveInBounds(new int[] {coords[0] + DOWNLEFT[0], coords[1] + DOWNLEFT[1]})){
+                moveList.add(new int[] {coords[0] + DOWNLEFT[0], coords[1] + DOWNLEFT[1]});
             }
         }
         return moveList;

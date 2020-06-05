@@ -21,7 +21,7 @@ public class Checkers {
             response = scanner.nextLine();
             
             String[] responseList = response.split(" ");
-            int[][] coords = new int[Integer.parseInt(responseList[0])][Integer.parseInt(responseList[1])];
+            int[] coords = {Integer.parseInt(responseList[0]), Integer.parseInt(responseList[1])};
             System.out.println(player1.possibleMoves(gameboard, coords));
         }
 

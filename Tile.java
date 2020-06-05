@@ -1,9 +1,9 @@
 public class Tile {
     
-    int[][] location;
+    int[] location;
     Piece piece;
 
-    public Tile(int[][] location, Piece piece){
+    public Tile(int[] location, Piece piece){
         this.location = location;
         this.piece = piece;
     } 
