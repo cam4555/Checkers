@@ -4,11 +4,11 @@ public class Player {
     
     Piece.color type;
 
-    //cant have negative index; have to make array of these values
-    int[][] UPRIGHT = new int[1][1];
-    int[][] UPLEFT = new int[1][-1];
-    int[][] DOWNRIGHT = new int[-1][1]; 
-    int[][] DOWNLEFT = new int[-1][-1];
+    final int[] UPRIGHT = {1, 1};
+    final int[] UPLEFT = {1, -1};
+    final int[] DOWNRIGHT = {-1, 1};
+    final int[] DOWNLEFT = {-1, -1};
+
 
     public Player(Piece.color type){
         this.type = type;
