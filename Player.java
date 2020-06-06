@@ -30,7 +30,7 @@ public class Player {
     public ArrayList<int[]> possibleMoves(Board board, int[] coords){
         ArrayList<int[]> moveList = new ArrayList<>();
         //todo
-        if (board.tileAtCoord(coords) != null && board.tileAtCoord(coords).getPiece().getColor() != this.type){
+        if (board.tileAtCoord(coords) != null && board.tileAtCoord(coords).getPiece().getColor() == this.type){
             if (moveInBounds(new int[] {coords[0] + UPRIGHT[0], coords[1] + UPRIGHT[1]})){
                 moveList.add(new int[] {coords[0] + UPRIGHT[0], coords[1] + UPRIGHT[1]});
             }
