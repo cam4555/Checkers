@@ -8,6 +8,13 @@ public class Tile {
         this.piece = piece;
     } 
 
+    public boolean hasPiece(){
+        if (piece != null){
+            return true;
+        }
+        return false;
+    }
+
     public Piece getPiece(){
         return piece;
     }

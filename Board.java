@@ -40,14 +40,14 @@ public class Board {
         Piece aPiece = null;
         for ( int i = 0; i < 8; i ++){
             for (int j = 0; j < 8; j++){
-                if (board[i][j] != null){}
-                    if (board[i][j].getPiece() != null 
-                    && aPiece == null){
+                if (board[i][j] != null && board[i][j].hasPiece()){
+                    if (aPiece == null){
                         aPiece = board[i][j].getPiece();
                     }
-                    else if (aPiece != board[i][j].getPiece()){
+                    else if (aPiece.getColor() != board[i][j].getPiece().getColor()){
                         return true;
                     }
+                }
                 
             }
         }
@@ -56,9 +56,10 @@ public class Board {
 
     @Override
     public String toString() {
-        String out = "";
+        int count = 0;
+        String out = "   0  1  2  3  4  5  6  7";
         for ( int i = 0; i < 8; i ++){
-            out += "\n";
+            out += "\n" + Integer.toString(count++);
             for (int j = 0; j < 8; j++){
                 if (board[i][j] == null)
                     out += "   ";
