@@ -36,6 +36,7 @@ public class Player {
             }
             else if (moveInBounds(new int[] {coords[0] + UPLEFT[0], coords[1] + UPLEFT[1]})){
                 moveList.add(new int[] {coords[0] + UPLEFT[0], coords[1] + UPLEFT[1]});
+                System.out.println("possible moes upleft");
             }
             else if (moveInBounds(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]})){
                 moveList.add(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]});

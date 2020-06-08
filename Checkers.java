@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Checkers {
 
@@ -22,7 +23,15 @@ public class Checkers {
             
             String[] responseList = response.split(" ");
             int[] coords = {Integer.parseInt(responseList[0]), Integer.parseInt(responseList[1])};
-            System.out.println(player1.possibleMoves(gameboard, coords).toString());
+            ArrayList<int[]> moves = player1.possibleMoves(gameboard, coords);
+
+            for (int i = 0; i < moves.size(); i++){
+                System.out.println("\n");
+                for (int j = 0; j < moves.get(i).length; j++){
+                    System.out.print(moves.get(i)[j]);
+                }
+                System.out.println("\n");
+            }
         }
 
 
