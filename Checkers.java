@@ -29,8 +29,9 @@ public class Checkers {
                 System.out.println("\n");
                 for (int j = 0; j < moves.get(i).length; j++){
                     System.out.print(moves.get(i)[j]);
+                    System.out.print(" ");
                 }
-                System.out.println("\n");
+                
             }
         }
 
