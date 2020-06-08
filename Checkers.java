@@ -18,6 +18,10 @@ public class Checkers {
         Player player2 = new Player(Piece.color.BLACK);
 
         while (gameboard.getStatus()){
+            
+
+
+
             System.out.println("Insert coords to see possible moves");
             response = scanner.nextLine();
             
