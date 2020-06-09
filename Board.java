@@ -33,8 +33,12 @@ public class Board {
 
     public void movePiece(int[] piece, int[] destination){
         Piece temp = board[piece[0]][piece[1]].getPiece();
-        board[piece[0]][piece[1]].removePiece();
+        removePiece(piece);
         board[destination[0]][destination[1]].addPiece(temp);;
+    }
+
+    public void removePiece(int[] piece){
+        board[piece[0]][piece[1]].removePiece();;
     }
 
     //false is game is over
