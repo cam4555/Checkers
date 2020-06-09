@@ -27,6 +27,17 @@ public class Player {
 
     }
 
+    public boolean validMove(Board board, int[] currentLocation, int[] move){
+        ArrayList<int[]> possibleMoves = possibleMoves(board, currentLocation);
+
+        for (int i = 0; i < possibleMoves.size(); i++){
+            if (possibleMoves.get(i)[0] == move[0] && possibleMoves.get(i)[1] == move[1]){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<int[]> possibleMoves(Board board, int[] coords){
         ArrayList<int[]> moveList = new ArrayList<>();
         //todo

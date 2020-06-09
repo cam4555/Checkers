@@ -12,16 +12,20 @@ public class Checkers {
 
         System.out.println("How many players");
         String response = scanner.nextLine();
-
+        int moveCount = 0;
         
         Player player1 = new Player(Piece.color.RED);
+        //AI
         Player player2 = new Player(Piece.color.BLACK);
 
         while (gameboard.getStatus()){
             
-
-
-
+            if (moveCount % 2 == 0){
+                System.out.println("Player ones turn");
+            }
+            else{
+                System.out.println("Player twos turn");
+            }
             System.out.println("Insert coords to see possible moves");
             response = scanner.nextLine();
             
@@ -29,14 +33,7 @@ public class Checkers {
             int[] coords = {Integer.parseInt(responseList[0]), Integer.parseInt(responseList[1])};
             ArrayList<int[]> moves = player1.possibleMoves(gameboard, coords);
 
-            for (int i = 0; i < moves.size(); i++){
-                System.out.println("\n");
-                for (int j = 0; j < moves.get(i).length; j++){
-                    System.out.print(moves.get(i)[j]);
-                    System.out.print(" ");
-                }
-                
-            }
+            moveCount++;
         }
 
 
