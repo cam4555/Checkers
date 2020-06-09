@@ -23,6 +23,10 @@ public class Tile {
         piece = null;
     }
 
+    public void addPiece(Piece piece){
+        this.piece = piece;
+    }
+
     @Override
     public String toString() {
         if (piece == null){

@@ -18,6 +18,9 @@ public class Piece {
         this.king = true;
     }
 
+    public boolean isKing(){
+        return this.king;
+    }
     public Piece.color getColor(){
         return pieceColor;
     }

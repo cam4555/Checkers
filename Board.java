@@ -31,8 +31,10 @@ public class Board {
         return board[coord[0]][coord[1]];
     }
 
-    public void movePiece(int[][] piece, int[][] destination){
-        
+    public void movePiece(int[] piece, int[] destination){
+        Piece temp = board[piece[0]][piece[1]].getPiece();
+        board[piece[0]][piece[1]].removePiece();
+        board[destination[0]][destination[1]].addPiece(temp);;
     }
 
     //false is game is over

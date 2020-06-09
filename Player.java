@@ -3,15 +3,31 @@ import java.util.ArrayList;
 public class Player {
     
     Piece.color type;
+    int playerNumber;
 
-    final int[] UPRIGHT = {1, 1};
-    final int[] UPLEFT = {1, -1};
-    final int[] DOWNRIGHT = {-1, 1};
-    final int[] DOWNLEFT = {-1, -1};
+    int[] UPRIGHT = {1, 1};
+    int[] UPLEFT = {1, -1};
+    int[] DOWNRIGHT = {-1, 1};
+    int[] DOWNLEFT = {-1, -1};
 
 
-    public Player(Piece.color type){
+    //player num 0 = ai.
+    //player num 1 = red
+    //player num 2 = black
+    public Player(Piece.color type, int playerNumber){
         this.type = type;
+        this.playerNumber = playerNumber;
+
+        if (playerNumber == 2){
+            UPRIGHT[0] *= -1;
+            UPRIGHT[1] *= -1;
+            UPLEFT[0] *= -1;
+            UPLEFT[1] *= -1;
+            DOWNLEFT[0] *= -1;
+            DOWNLEFT[1] *= -1;
+            DOWNRIGHT[0] *= -1;
+            DOWNRIGHT[1] *= -1;
+        }
     }
 
 
@@ -27,6 +43,10 @@ public class Player {
 
     }
 
+
+
+
+
     public boolean validMove(Board board, int[] currentLocation, int[] move){
         ArrayList<int[]> possibleMoves = possibleMoves(board, currentLocation);
 
@@ -38,21 +58,24 @@ public class Player {
         return false;
     }
 
+
     public ArrayList<int[]> possibleMoves(Board board, int[] coords){
         ArrayList<int[]> moveList = new ArrayList<>();
         //todo
-        if (board.tileAtCoord(coords) != null && moveInBounds(coords) && board.tileAtCoord(coords).getPiece().getColor() == this.type){
+        if (board.tileAtCoord(coords).hasPiece() && moveInBounds(coords) && board.tileAtCoord(coords).getPiece().getColor() == this.type){
             if (moveInBounds(new int[] {coords[0] + UPRIGHT[0], coords[1] + UPRIGHT[1]})){
                 moveList.add(new int[] {coords[0] + UPRIGHT[0], coords[1] + UPRIGHT[1]});
             }
             if (moveInBounds(new int[] {coords[0] + UPLEFT[0], coords[1] + UPLEFT[1]})){
                 moveList.add(new int[] {coords[0] + UPLEFT[0], coords[1] + UPLEFT[1]});
             }
-            if (moveInBounds(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]})){
-                moveList.add(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]});
-            }
-            if (moveInBounds(new int[] {coords[0] + DOWNLEFT[0], coords[1] + DOWNLEFT[1]})){
-                moveList.add(new int[] {coords[0] + DOWNLEFT[0], coords[1] + DOWNLEFT[1]});
+            if (board.tileAtCoord(coords).getPiece().isKing()){
+                if (moveInBounds(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]})){
+                    moveList.add(new int[] {coords[0] + DOWNRIGHT[0], coords[1] + DOWNRIGHT[1]});
+                }
+                if (moveInBounds(new int[] {coords[0] + DOWNLEFT[0], coords[1] + DOWNLEFT[1]})){
+                    moveList.add(new int[] {coords[0] + DOWNLEFT[0], coords[1] + DOWNLEFT[1]});
+                }
             }
         }
         return moveList;

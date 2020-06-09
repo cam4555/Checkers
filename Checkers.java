@@ -14,9 +14,9 @@ public class Checkers {
         String response = scanner.nextLine();
         int moveCount = 0;
         
-        Player player1 = new Player(Piece.color.RED);
+        Player player1 = new Player(Piece.color.RED, 1);
         //AI
-        Player player2 = new Player(Piece.color.BLACK);
+        Player player2 = new Player(Piece.color.BLACK, 2);
 
         while (gameboard.getStatus()){
             
@@ -31,7 +31,16 @@ public class Checkers {
             
             String[] responseList = response.split(" ");
             int[] coords = {Integer.parseInt(responseList[0]), Integer.parseInt(responseList[1])};
-            ArrayList<int[]> moves = player1.possibleMoves(gameboard, coords);
+            int[] move = {Integer.parseInt(responseList[2]), Integer.parseInt(responseList[3])};
+
+            if(player1.validMove(gameboard, coords, move)){
+                gameboard.movePiece(coords, move);
+                System.out.println(gameboard.toString());
+
+            }
+            else{
+                System.out.println("invalid move");
+            }
 
             moveCount++;
         }
