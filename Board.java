@@ -37,12 +37,16 @@ public class Board {
         if (destination[0] == 0){
             temp.makeKing();
         }
+        //if jump was made
+        if (Math.abs(piece[0] + destination[0]) % 2 == 0){
+            removePiece(new int[] {piece[0] + destination[0] / 2, piece[1] + destination[1] / 2});
+        }
         board[destination[0]][destination[1]].addPiece(temp);
         
     }
 
     public void removePiece(int[] piece){
-        board[piece[0]][piece[1]].removePiece();;
+        board[piece[0]][piece[1]].removePiece();
     }
 
     //false is game is over
@@ -62,6 +66,17 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public Piece.color whoWon(){
+        for (int i = 0; i < 8; i ++){
+            for (int j = 0; j < 8; j++){
+                if (board[i][j] != null && board[i][j].hasPiece()){
+                    return board[i][j].getPiece().getColor();
+                }
+            }
+        }
+        return null;
     }
 
     @Override

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Checkers {
 
@@ -54,13 +54,16 @@ public class Checkers {
                         System.out.println("invalid move");
                     }
             }
-             
-            
 
             moveCount++;
         }
 
-
+        if (gameboard.whoWon() == Piece.color.BLACK){
+            System.out.println("Player 1 has won");
+        }
+        else{
+            System.out.println("Player 2 has won");
+        }
         
         
         scanner.close();
