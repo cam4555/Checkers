@@ -34,7 +34,11 @@ public class Board {
     public void movePiece(int[] piece, int[] destination){
         Piece temp = board[piece[0]][piece[1]].getPiece();
         removePiece(piece);
-        board[destination[0]][destination[1]].addPiece(temp);;
+        if (destination[0] == 0){
+            temp.makeKing();
+        }
+        board[destination[0]][destination[1]].addPiece(temp);
+        
     }
 
     public void removePiece(int[] piece){

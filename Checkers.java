@@ -19,28 +19,43 @@ public class Checkers {
         Player player2 = new Player(Piece.color.BLACK, 2);
 
         while (gameboard.getStatus()){
-            
-            if (moveCount % 2 == 0){
-                System.out.println("Player ones turn");
-            }
-            else{
-                System.out.println("Player twos turn");
-            }
-            System.out.println("Insert coords to see possible moves");
+            System.out.println("enter move");
             response = scanner.nextLine();
             
             String[] responseList = response.split(" ");
+            while (responseList.length != 4){
+                System.out.println("Insert coords to see possible moves");
+                response = scanner.nextLine();
+            
+                responseList = response.split(" ");
+            }
             int[] coords = {Integer.parseInt(responseList[0]), Integer.parseInt(responseList[1])};
             int[] move = {Integer.parseInt(responseList[2]), Integer.parseInt(responseList[3])};
 
-            if(player1.validMove(gameboard, coords, move)){
-                gameboard.movePiece(coords, move);
-                System.out.println(gameboard.toString());
-
+                        
+            if (moveCount % 2 == 0){
+                System.out.println("Player ones turn");
+                if(player1.validMove(gameboard, coords, move)){
+                    gameboard.movePiece(coords, move);
+                    System.out.println(gameboard.toString());
+                }
+                else{
+                        System.out.println("invalid move");
+                }
             }
             else{
-                System.out.println("invalid move");
+                System.out.println("Player twos turn");
+                if(player2.validMove(gameboard, coords, move)){
+                    gameboard.movePiece(coords, move);
+                    System.out.println(gameboard.toString());
+
+                    }
+                else{
+                        System.out.println("invalid move");
+                    }
             }
+             
+            
 
             moveCount++;
         }
