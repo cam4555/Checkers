@@ -38,8 +38,14 @@ public class Board {
             temp.makeKing();
         }
         //if jump was made
+        System.out.println("sdfkjhgsdfkjhsgdfkjhgsdfkjhgkjshdgfkjshdgfskjdhgfskjdhgfksjdhgfksjhgdf");
+        System.out.println(Math.abs(piece[0] + destination[0]) % 2 == 0);
         if (Math.abs(piece[0] + destination[0]) % 2 == 0){
-            removePiece(new int[] {piece[0] + destination[0] / 2, piece[1] + destination[1] / 2});
+            System.out.println(piece[0] + destination[0] / 2);
+            System.out.println(piece[1] + destination[1] / 2);
+            //TODO
+            //logic
+            removePiece(new int[] {(piece[0] + destination[0] / 2) - 1, (piece[1] + destination[1] / 2) - 1});
         }
         board[destination[0]][destination[1]].addPiece(temp);
         
