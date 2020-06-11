@@ -1,13 +1,14 @@
 public class Board {
     
     Tile[][] board;
+    final int BOARDSIZE = 8;
 
     public Board(){
-        board = new Tile[8][8];
+        board = new Tile[BOARDSIZE][BOARDSIZE];
         // X is playable space, O is not
         //i row, j col
-        for (int i = 0; i < 8; i++){
-            for (int j = 0; j < 8; j++){
+        for (int i = 0; i < BOARDSIZE; i++){
+            for (int j = 0; j < BOARDSIZE; j++){
                 if (( i % 2 != 0 && j % 2 == 0) || (i % 2 == 0 && j % 2 != 0)){
 
                     if (i < 3){
@@ -41,11 +42,9 @@ public class Board {
         System.out.println("sdfkjhgsdfkjhsgdfkjhgsdfkjhgkjshdgfkjshdgfskjdhgfskjdhgfksjdhgfksjhgdf");
         System.out.println(Math.abs(piece[0] + destination[0]) % 2 == 0);
         if (Math.abs(piece[0] + destination[0]) % 2 == 0){
-            System.out.println(piece[0] + destination[0] / 2);
-            System.out.println(piece[1] + destination[1] / 2);
             //TODO
             //logic
-            removePiece(new int[] {(piece[0] + destination[0] / 2) - 1, (piece[1] + destination[1] / 2) - 1});
+            removePiece(new int[] {(Math.max(piece[0], destination[0])) - 1, (Math.max(piece[1], destination[1]) - 1)});
         }
         board[destination[0]][destination[1]].addPiece(temp);
         
@@ -58,8 +57,8 @@ public class Board {
     //false is game is over
     public boolean getStatus(){
         Piece aPiece = null;
-        for ( int i = 0; i < 8; i ++){
-            for (int j = 0; j < 8; j++){
+        for ( int i = 0; i < BOARDSIZE; i ++){
+            for (int j = 0; j < BOARDSIZE; j++){
                 if (board[i][j] != null && board[i][j].hasPiece()){
                     if (aPiece == null){
                         aPiece = board[i][j].getPiece();
@@ -75,8 +74,8 @@ public class Board {
     }
 
     public Piece.color whoWon(){
-        for (int i = 0; i < 8; i ++){
-            for (int j = 0; j < 8; j++){
+        for (int i = 0; i < BOARDSIZE; i ++){
+            for (int j = 0; j < BOARDSIZE; j++){
                 if (board[i][j] != null && board[i][j].hasPiece()){
                     return board[i][j].getPiece().getColor();
                 }
@@ -89,9 +88,9 @@ public class Board {
     public String toString() {
         int count = 0;
         String out = "   0  1  2  3  4  5  6  7";
-        for ( int i = 0; i < 8; i ++){
+        for ( int i = 0; i < BOARDSIZE; i ++){
             out += "\n" + Integer.toString(count++);
-            for (int j = 0; j < 8; j++){
+            for (int j = 0; j < BOARDSIZE; j++){
                 if (board[i][j] == null)
                     out += "   ";
                 else
